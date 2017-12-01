@@ -1,5 +1,8 @@
 package com.example.mayankjain.unitool;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.mayankjain.unitool.fragments.Calculator;
+import com.example.mayankjain.unitool.fragments.HomeFragment;
+import com.example.mayankjain.unitool.fragments.Weather;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +47,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction  = manager.beginTransaction();
+        Fragment fragment = new HomeFragment();
+        transaction.add(R.id.main_activity_fragment,fragment);
+        transaction.commit();
     }
 
     @Override
@@ -78,11 +91,18 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction  = manager.beginTransaction();
+        Fragment fragment = new HomeFragment();
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.calculator) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            fragment = new Calculator();
+
+        } else if (id == R.id.weather) {
+
+            fragment = new Weather();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -93,6 +113,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+
+        transaction.replace(R.id.main_activity_fragment,fragment);
+        transaction.commit();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
