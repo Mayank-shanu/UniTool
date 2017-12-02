@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Weather" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/sci_calc"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Scientific Calculator" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

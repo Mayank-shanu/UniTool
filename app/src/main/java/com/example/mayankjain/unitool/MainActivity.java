@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.mayankjain.unitool.fragments.Calculator;
 import com.example.mayankjain.unitool.fragments.HomeFragment;
+import com.example.mayankjain.unitool.fragments.Scientific_calc;
 import com.example.mayankjain.unitool.fragments.Weather;
 
 public class MainActivity extends AppCompatActivity
@@ -104,7 +105,9 @@ public class MainActivity extends AppCompatActivity
 
             fragment = new Weather();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.sci_calc) {
+
+            fragment = new Scientific_calc();
 
         } else if (id == R.id.nav_manage) {
 
